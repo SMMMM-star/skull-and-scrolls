@@ -3,43 +3,43 @@ import { Card } from "@/components/ui/card";
 
 const skillCategories = [
   {
-    title: "Frontend Arsenal",
+    title: "Data Analysis Arsenal",
     icon: "⚔️",
     skills: [
-      { name: "React", level: 95, weapon: "Cutlass" },
-      { name: "TypeScript", level: 90, weapon: "Rapier" },
-      { name: "Vue.js", level: 85, weapon: "Saber" },
-      { name: "Tailwind CSS", level: 90, weapon: "Dagger" }
+      { name: "Python", level: 85, weapon: "Cutlass" },
+      { name: "Pandas", level: 90, weapon: "Rapier" },
+      { name: "NumPy", level: 85, weapon: "Saber" },
+      { name: "SQL", level: 88, weapon: "Dagger" }
     ]
   },
   {
-    title: "Backend Cannons",
+    title: "ML Cannons",
     icon: "🔫",
     skills: [
-      { name: "Node.js", level: 88, weapon: "Cannon" },
-      { name: "Python", level: 82, weapon: "Musket" },
-      { name: "PostgreSQL", level: 85, weapon: "Blunderbuss" },
-      { name: "MongoDB", level: 80, weapon: "Pistol" }
+      { name: "Scikit-learn", level: 80, weapon: "Cannon" },
+      { name: "TensorFlow", level: 70, weapon: "Musket" },
+      { name: "Statistics", level: 85, weapon: "Blunderbuss" },
+      { name: "R", level: 75, weapon: "Pistol" }
     ]
   },
   {
-    title: "Navigation Tools",
+    title: "Visualization Tools",
     icon: "🧭",
     skills: [
-      { name: "Git", level: 95, weapon: "Compass" },
-      { name: "Docker", level: 78, weapon: "Telescope" },
-      { name: "AWS", level: 75, weapon: "Sextant" },
-      { name: "Linux", level: 82, weapon: "Anchor" }
+      { name: "Matplotlib", level: 85, weapon: "Compass" },
+      { name: "Seaborn", level: 82, weapon: "Telescope" },
+      { name: "Plotly", level: 78, weapon: "Sextant" },
+      { name: "Tableau", level: 80, weapon: "Anchor" }
     ]
   },
   {
-    title: "Treasure Maps",
+    title: "Data Engineering",
     icon: "🗺️",
     skills: [
-      { name: "UI/UX Design", level: 88, weapon: "Quill" },
-      { name: "Figma", level: 85, weapon: "Parchment" },
-      { name: "Adobe Creative", level: 80, weapon: "Inkwell" },
-      { name: "Prototyping", level: 90, weapon: "Scroll" }
+      { name: "Apache Spark", level: 65, weapon: "Quill" },
+      { name: "MongoDB", level: 75, weapon: "Parchment" },
+      { name: "PostgreSQL", level: 82, weapon: "Inkwell" },
+      { name: "Docker", level: 70, weapon: "Scroll" }
     ]
   }
 ];
@@ -144,16 +144,16 @@ const SkillsSection = () => {
             </h3>
             <div className="grid grid-cols-3 gap-8 text-center">
               <div>
-                <div className="text-3xl font-pirate text-pirate-gold">5+</div>
-                <div className="text-pirate-parchment font-royal">Years Coding</div>
+                <div className="text-3xl font-pirate text-pirate-gold">2+</div>
+                <div className="text-pirate-parchment font-royal">Years Experience</div>
               </div>
               <div>
-                <div className="text-3xl font-pirate text-pirate-gold">50+</div>
-                <div className="text-pirate-parchment font-royal">Projects Conquered</div>
+                <div className="text-3xl font-pirate text-pirate-gold">15+</div>
+                <div className="text-pirate-parchment font-royal">Data Projects</div>
               </div>
               <div>
-                <div className="text-3xl font-pirate text-pirate-gold">20+</div>
-                <div className="text-pirate-parchment font-royal">Technologies Mastered</div>
+                <div className="text-3xl font-pirate text-pirate-gold">10+</div>
+                <div className="text-pirate-parchment font-royal">ML Models Built</div>
               </div>
             </div>
           </Card>

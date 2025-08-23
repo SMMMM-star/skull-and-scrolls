@@ -182,4 +182,29 @@ All colors MUST be HSL.
   .animate-sail {
     animation: sail 10s linear infinite;
   }
+  /* Slider styles for music player */
+  .slider {
+    background: linear-gradient(to right, hsl(var(--pirate-gold)) 0%, hsl(var(--pirate-brown-dark)) 100%);
+  }
+  
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: hsl(var(--pirate-gold));
+    cursor: pointer;
+    border: 2px solid hsl(var(--pirate-brown));
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: hsl(var(--pirate-gold));
+    cursor: pointer;
+    border: 2px solid hsl(var(--pirate-brown));
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
 }

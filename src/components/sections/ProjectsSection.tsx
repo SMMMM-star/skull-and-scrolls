@@ -5,32 +5,32 @@ import { useState } from "react";
 
 const projects = [
   {
-    title: "Treasure Hunter Dashboard",
-    description: "A React-based analytics dashboard that helps captains track their digital treasures across multiple repositories.",
-    tech: ["React", "TypeScript", "D3.js", "Node.js"],
+    title: "Customer Churn Prediction",
+    description: "Machine learning model to predict customer churn for a telecom company using classification algorithms and feature engineering.",
+    tech: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
     status: "Live",
-    type: "Web Application"
+    type: "ML Project"
   },
   {
-    title: "Pirate's Code Generator",
-    description: "An AI-powered tool that generates clean, scalable code following the ancient pirate principles of software architecture.",
-    tech: ["Python", "OpenAI API", "FastAPI", "React"],
+    title: "Sales Forecasting Dashboard",
+    description: "Interactive dashboard for sales trend analysis and forecasting using time series models and statistical methods.",
+    tech: ["Python", "Plotly", "Streamlit", "ARIMA"],
+    status: "Live",
+    type: "Data Visualization"
+  },
+  {
+    title: "Sentiment Analysis Tool",
+    description: "NLP model to analyze customer reviews and social media sentiment for brand monitoring using natural language processing.",
+    tech: ["Python", "NLTK", "TextBlob", "Flask"],
     status: "In Progress",
-    type: "AI Tool"
+    type: "NLP Project"
   },
   {
-    title: "Captain's Log Mobile",
-    description: "A mobile app for developers to track their coding adventures, bugs conquered, and skills acquired on their journey.",
-    tech: ["React Native", "Firebase", "Redux", "TypeScript"],
+    title: "Fraud Detection System",
+    description: "Anomaly detection model to identify fraudulent transactions using unsupervised learning and statistical analysis.",
+    tech: ["Python", "Isolation Forest", "PostgreSQL", "Docker"],
     status: "Planning",
-    type: "Mobile App"
-  },
-  {
-    title: "Seafarer's UI Kit",
-    description: "A comprehensive design system and component library inspired by nautical themes for modern web applications.",
-    tech: ["React", "Tailwind CSS", "Storybook", "Framer Motion"],
-    status: "Live",
-    type: "Design System"
+    type: "ML System"
   }
 ];
 
@@ -52,7 +52,7 @@ const ProjectsSection = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          🏝️ Treasure Trove Projects
+          🏝️ Data Science Treasure Trove
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -160,12 +160,12 @@ const ProjectsSection = () => {
           transition={{ delay: 1.2, duration: 0.8 }}
         >
           <p className="text-pirate-parchment font-royal text-lg mb-4">
-            Ready to embark on a new adventure together?
+            Ready to embark on a new data science adventure together?
           </p>
           <Button 
             className="bg-pirate-gold text-pirate-brown hover:bg-pirate-gold-dark font-royal font-semibold px-8 py-3 text-lg shadow-treasure"
           >
-            🏴‍☠️ Start a New Quest
+            🏴‍☠️ Start a New Data Quest
           </Button>
         </motion.div>
       </div>

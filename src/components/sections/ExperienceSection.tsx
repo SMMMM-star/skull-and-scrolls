@@ -3,25 +3,25 @@ import { Card } from "@/components/ui/card";
 
 const experiences = [
   {
-    title: "Senior Frontend Buccaneer",
-    company: "Digital Seas Corp",
-    period: "2022 - Present",
-    description: "Leading raids on complex React applications, navigating through stormy codebases and emerging victorious with scalable solutions.",
-    achievements: ["Conquered 3 major frontend overhauls", "Mentored junior pirates", "Implemented treasure-worthy design systems"]
+    title: "Junior Data Scientist",
+    company: "DataTreasure Analytics",
+    period: "2023 - Present",
+    description: "Embarking on data exploration voyages, uncovering insights from vast datasets and building predictive models to guide business decisions.",
+    achievements: ["Developed 5 machine learning models", "Improved prediction accuracy by 25%", "Automated data pipeline processes"]
   },
   {
-    title: "Full Stack Corsair",
-    company: "Tech Treasure Island",
-    period: "2020 - 2022",
-    description: "Sailed the full stack seas, from frontend shores to backend depths, creating end-to-end digital adventures.",
-    achievements: ["Built 5 successful web applications", "Optimized database performance by 60%", "Led cross-functional crews"]
+    title: "Data Analyst Apprentice",
+    company: "Insight Harbor Inc",
+    period: "2022 - 2023",
+    description: "Navigated through complex datasets, creating visualizations and reports that helped stakeholders understand data stories.",
+    achievements: ["Created 20+ interactive dashboards", "Reduced reporting time by 40%", "Analyzed customer behavior patterns"]
   },
   {
-    title: "JavaScript Navigator",
-    company: "Code Cove Studios",
-    period: "2018 - 2020",
-    description: "Charted new territories in JavaScript frameworks, discovering hidden gems in Vue.js and React ecosystems.",
-    achievements: ["Developed interactive user experiences", "Reduced load times by 40%", "Established coding best practices"]
+    title: "Research Assistant",
+    company: "University Data Lab",
+    period: "2021 - 2022",
+    description: "Supported research projects by collecting, cleaning, and analyzing data using statistical methods and programming tools.",
+    achievements: ["Processed datasets with 100K+ records", "Contributed to 3 research publications", "Mastered SQL and Python basics"]
   }
 ];
 

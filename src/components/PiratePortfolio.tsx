@@ -8,6 +8,7 @@ import ExperienceSection from "./sections/ExperienceSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import SkillsSection from "./sections/SkillsSection";
 import ContactSection from "./sections/ContactSection";
+import MusicSection from "./MusicSection";
 import oceanBackground from "@/assets/ocean-background.jpg";
 
 const sections = [
@@ -15,7 +16,8 @@ const sections = [
   { id: 1, name: "Experience", icon: "⚔️", component: ExperienceSection },
   { id: 2, name: "Projects", icon: "🏝️", component: ProjectsSection },
   { id: 3, name: "Skills", icon: "📜", component: SkillsSection },
-  { id: 4, name: "Contact", icon: "☠️", component: ContactSection },
+  { id: 4, name: "Music", icon: "🎵", component: MusicSection },
+  { id: 5, name: "Contact", icon: "☠️", component: ContactSection },
 ];
 
 const PiratePortfolio = () => {
@@ -153,11 +155,12 @@ const PiratePortfolio = () => {
                 transition={{ duration: 4, repeat: Infinity }}
               >
                 <p className="text-pirate-parchment font-royal text-sm italic">
-                  {currentSection === 0 && "\"The sea, once it casts its spell, holds one in its net of wonder forever.\""}
-                  {currentSection === 1 && "\"A smooth sea never made a skilled sailor.\""}
-                  {currentSection === 2 && "\"The expert in anything was once a beginner.\""}
-                  {currentSection === 3 && "\"It is not the size of a man but the size of his heart that matters.\""}
-                  {currentSection === 4 && "\"Adventure is worthwhile in itself.\""}
+                  {currentSection === 0 && "\"Data is the new oil, but like oil, it's valuable only when refined.\""}
+                  {currentSection === 1 && "\"In data science, experience is the best teacher of statistical intuition.\""}
+                  {currentSection === 2 && "\"Every dataset tells a story; the data scientist's job is to listen.\""}
+                  {currentSection === 3 && "\"Statistics are like a bikini - what they reveal is suggestive, but what they conceal is vital.\""}
+                  {currentSection === 4 && "\"Music gives soul to the universe, wings to the mind, and life to everything.\""}
+                  {currentSection === 5 && "\"The best way to find out if you can trust somebody is to trust them.\""}
                 </p>
               </motion.div>
             </motion.div>

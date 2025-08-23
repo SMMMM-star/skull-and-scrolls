@@ -50,18 +50,18 @@ const AboutSection = () => {
                   transition={{ delay: 1, duration: 0.8 }}
                 >
                   <p className="mb-4">
-                    Ahoy there, brave soul! I be a seasoned captain of the digital seas, 
-                    navigating through treacherous codes and conquering the most challenging 
-                    technology storms.
+                    Ahoy there, brave soul! I be a junior data scientist navigating the vast 
+                    oceans of data, with a passion for discovering hidden treasures in datasets. 
+                    My ship is equipped with Python, SQL, machine learning algorithms, and statistical analysis tools.
                   </p>
                   <p className="mb-4">
-                    With years of experience plundering the depths of software development, 
-                    I've amassed a treasure trove of skills in web technologies, creating 
-                    digital experiences that would make even Blackbeard himself proud.
+                    From data exploration to predictive modeling, I've embarked on exciting voyages through 
+                    various data science projects. When I'm not analyzing data, you'll find me learning new 
+                    techniques and contributing to the data science community.
                   </p>
                   <p>
-                    When I'm not coding, you'll find me charting new courses in the 
-                    ever-expanding ocean of technology, always ready for the next adventure!
+                    Currently charting new courses in machine learning and artificial intelligence, 
+                    always ready for the next data adventure!
                   </p>
                 </motion.div>
 
@@ -71,7 +71,7 @@ const AboutSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2, duration: 0.8 }}
                 >
-                  {["React Navigator", "TypeScript Buccaneer", "Node.js Corsair", "UI/UX Treasure Hunter"].map((skill, i) => (
+                  {["Python Navigator", "Machine Learning Buccaneer", "Data Visualization Corsair", "Statistical Analysis Treasure Hunter"].map((skill, i) => (
                     <span
                       key={skill}
                       className="px-4 py-2 bg-pirate-gold text-pirate-brown-dark font-royal font-semibold rounded-full text-sm shadow-mystical"
@@ -93,9 +93,9 @@ const AboutSection = () => {
           transition={{ delay: 1.5, duration: 0.8 }}
         >
           <blockquote className="text-2xl font-pirate text-pirate-gold italic">
-            "Not all treasure is silver and gold, mate."
+            "Data is the new oil, but like oil, it's valuable only when refined."
           </blockquote>
-          <p className="text-pirate-parchment font-royal mt-2">- Captain Jack Sparrow</p>
+          <p className="text-pirate-parchment font-royal mt-2">- Data Science Wisdom</p>
         </motion.div>
       </div>
     </motion.section>
