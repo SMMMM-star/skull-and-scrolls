@@ -18,6 +18,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        treasure: "bg-pirate-gold text-pirate-brown hover:bg-pirate-gold-dark font-royal font-semibold shadow-mystical transition-mystical",
+        pirate: "bg-pirate-brown text-pirate-parchment hover:bg-pirate-brown-dark border border-pirate-gold font-royal transition-mystical",
+        skull: "bg-black/80 text-pirate-gold hover:bg-black border border-pirate-gold shadow-treasure font-pirate transition-mystical",
       },
       size: {
         default: "h-10 px-4 py-2",

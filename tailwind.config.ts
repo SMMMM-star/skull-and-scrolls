@@ -18,6 +18,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				pirate: ['Pirata One', 'cursive'],
+				royal: ['Cinzel', 'serif'],
+				creepy: ['Creepster', 'cursive'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -52,15 +57,15 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+				pirate: {
+					gold: 'hsl(var(--pirate-gold))',
+					'gold-dark': 'hsl(var(--pirate-gold-dark))',
+					brown: 'hsl(var(--pirate-brown))',
+					'brown-dark': 'hsl(var(--pirate-brown-dark))',
+					ocean: 'hsl(var(--pirate-ocean))',
+					'ocean-dark': 'hsl(var(--pirate-ocean-dark))',
+					parchment: 'hsl(var(--pirate-parchment))',
+					'parchment-dark': 'hsl(var(--pirate-parchment-dark))'
 				}
 			},
 			borderRadius: {
@@ -84,11 +89,31 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				wave: {
+					'0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+					'50%': { transform: 'translateY(-10px) rotate(1deg)' }
+				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-20px)' }
+				},
+				sail: {
+					'0%': { transform: 'translateX(-100px)' },
+					'100%': { transform: 'translateX(calc(100vw + 100px))' }
+				},
+				flicker: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.7' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				wave: 'wave 3s ease-in-out infinite',
+				float: 'float 4s ease-in-out infinite',
+				sail: 'sail 10s linear infinite',
+				flicker: 'flicker 2s ease-in-out infinite'
 			}
 		}
 	},
