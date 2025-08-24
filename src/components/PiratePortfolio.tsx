@@ -8,7 +8,6 @@ import ExperienceSection from "./sections/ExperienceSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import SkillsSection from "./sections/SkillsSection";
 import ContactSection from "./sections/ContactSection";
-import MusicSection from "./MusicSection";
 import oceanBackground from "@/assets/ocean-background.jpg";
 
 const sections = [
@@ -16,8 +15,7 @@ const sections = [
   { id: 1, name: "Experience", icon: "⚔️", component: ExperienceSection },
   { id: 2, name: "Projects", icon: "🏝️", component: ProjectsSection },
   { id: 3, name: "Skills", icon: "📜", component: SkillsSection },
-  { id: 4, name: "Music", icon: "🎵", component: MusicSection },
-  { id: 5, name: "Contact", icon: "☠️", component: ContactSection },
+  { id: 4, name: "Contact", icon: "☠️", component: ContactSection },
 ];
 
 const PiratePortfolio = () => {
@@ -71,65 +69,167 @@ const PiratePortfolio = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40" />
         
-        {/* Enhanced Floating particles */}
-        {[...Array(40)].map((_, i) => (
+        {/* Enhanced Floating particles with multiple layers */}
+        {[...Array(60)].map((_, i) => (
           <motion.div
-            key={i}
+            key={`particle-${i}`}
             className={`absolute rounded-full ${
-              i % 4 === 0 ? 'w-2 h-2 bg-pirate-gold' : 
-              i % 4 === 1 ? 'w-1 h-1 bg-pirate-parchment' :
-              i % 4 === 2 ? 'w-1.5 h-1.5 bg-pirate-gold opacity-60' :
-              'w-0.5 h-0.5 bg-white'
+              i % 6 === 0 ? 'w-3 h-3 bg-pirate-gold shadow-treasure' : 
+              i % 6 === 1 ? 'w-1 h-1 bg-pirate-parchment' :
+              i % 6 === 2 ? 'w-2 h-2 bg-pirate-gold opacity-60' :
+              i % 6 === 3 ? 'w-0.5 h-0.5 bg-white' :
+              i % 6 === 4 ? 'w-1.5 h-1.5 bg-pirate-gold/80' :
+              'w-4 h-4 bg-gradient-to-r from-pirate-gold to-pirate-gold-dark opacity-40'
             }`}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              zIndex: Math.random() > 0.5 ? 5 : 15,
+            }}
+            animate={{
+              y: [-40, 40, -40],
+              x: [-15, 15, -15],
+              opacity: [0.1, 1, 0.1],
+              scale: [0.2, 1.5, 0.2],
+              rotate: [0, 720, 0],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 8,
+              repeat: Infinity,
+              delay: Math.random() * 4,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+
+        {/* Floating treasure coins */}
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={`coin-${i}`}
+            className="absolute w-6 h-6 rounded-full bg-pirate-treasure border-2 border-pirate-gold-dark shadow-treasure text-center text-xs leading-6 font-bold text-pirate-brown"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [-20, 20, -20],
+              rotate: [0, 360, 720],
+              scale: [0.8, 1.2, 0.8],
+            }}
+            transition={{
+              duration: 6 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          >
+            ⚡
+          </motion.div>
+        ))}
+
+        {/* Enhanced Lightning effects */}
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={`lightning-${i}`}
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: `linear-gradient(${Math.random() * 360}deg, 
+                rgba(255, 215, 0, 0.1), 
+                transparent 30%, 
+                rgba(255, 215, 0, 0.05), 
+                transparent 70%)`
+            }}
+            animate={{
+              opacity: [0, 0, 0, 0.4, 0.8, 0, 0, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              delay: i * 20 + Math.random() * 15,
+            }}
+          />
+        ))}
+
+        {/* Mystical energy waves */}
+        {[...Array(4)].map((_, i) => (
+          <motion.div
+            key={`wave-${i}`}
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: `conic-gradient(from ${i * 90}deg, 
+                transparent, 
+                rgba(255, 215, 0, 0.1), 
+                transparent, 
+                rgba(255, 215, 0, 0.05), 
+                transparent)`
+            }}
+            animate={{
+              rotate: [0, 360],
+              opacity: [0.1, 0.3, 0.1],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{
+              duration: 25 + i * 5,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+        ))}
+
+        {/* Floating mystical orbs */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={`orb-${i}`}
+            className="absolute w-12 h-12 rounded-full bg-mystical-glow border border-pirate-gold/30 backdrop-blur-sm"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
               y: [-30, 30, -30],
-              x: [-10, 10, -10],
-              opacity: [0.1, 0.8, 0.1],
-              scale: [0.3, 1.2, 0.3],
-              rotate: [0, 360, 0],
+              x: [-20, 20, -20],
+              opacity: [0.2, 0.6, 0.2],
+              scale: [0.5, 1, 0.5],
+              rotate: [0, 180, 360],
             }}
             transition={{
-              duration: 6 + Math.random() * 6,
+              duration: 12 + Math.random() * 8,
               repeat: Infinity,
-              delay: Math.random() * 3,
+              delay: Math.random() * 5,
               ease: "easeInOut"
             }}
-          />
+          >
+            <motion.div
+              className="w-full h-full rounded-full bg-gradient-to-r from-pirate-gold/20 to-transparent"
+              animate={{ rotate: [0, -360] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            />
+          </motion.div>
         ))}
 
-        {/* Lightning effects */}
-        {[...Array(3)].map((_, i) => (
+        {/* Sparkling stars */}
+        {[...Array(25)].map((_, i) => (
           <motion.div
-            key={`lightning-${i}`}
-            className="absolute inset-0 bg-gradient-to-b from-pirate-gold/10 via-transparent to-transparent pointer-events-none"
+            key={`star-${i}`}
+            className="absolute text-pirate-gold text-xs"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
             animate={{
-              opacity: [0, 0, 0, 0.3, 0, 0, 0],
+              opacity: [0, 1, 0],
+              scale: [0.5, 1.5, 0.5],
+              rotate: [0, 180, 360],
             }}
             transition={{
-              duration: 8,
+              duration: 3 + Math.random() * 3,
               repeat: Infinity,
-              delay: i * 15 + Math.random() * 10,
+              delay: Math.random() * 2,
             }}
-          />
+          >
+            ✨
+          </motion.div>
         ))}
-
-        {/* Mystical fog */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-radial from-transparent via-pirate-gold/5 to-transparent pointer-events-none"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
       </div>
 
       {/* Background Music */}
@@ -261,8 +361,7 @@ const PiratePortfolio = () => {
                     {currentSection === 1 && "\"In the vast seas of data science, experience be the best compass for navigating statistical storms.\""}
                     {currentSection === 2 && "\"Every dataset tells a tale of adventure; this data scientist's job is to listen to its secrets.\""}
                     {currentSection === 3 && "\"A pirate's skills be like his weapons - what ye show is impressive, but what ye conceal is legendary.\""}
-                    {currentSection === 4 && "\"Music gives soul to the seven seas, wings to a pirate's mind, and rhythm to every adventure.\""}
-                    {currentSection === 5 && "\"The best way to find a trustworthy crew mate is to trust them with yer first treasure map.\""}
+                    {currentSection === 4 && "\"The best way to find a trustworthy crew mate is to trust them with yer first treasure map.\""}
                   </p>
                   <div className="flex items-center mt-3">
                     <motion.div

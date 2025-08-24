@@ -78,7 +78,18 @@ const AboutSection = () => {
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="grid md:grid-cols-2 gap-8 items-center relative">
+          {/* Background decorative elements */}
+          <motion.div
+            className="absolute -top-10 -left-10 w-20 h-20 border-2 border-pirate-gold/20 rounded-full"
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.div
+            className="absolute -bottom-10 -right-10 w-16 h-16 border border-pirate-gold/30 rounded-full"
+            animate={{ rotate: [360, 0] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          />
           <motion.div
             className="relative"
             initial={{ x: -100, opacity: 0 }}
@@ -98,8 +109,19 @@ const AboutSection = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            <Card className="p-8 bg-card/80 backdrop-blur-sm border-pirate-gold shadow-mystical">
-              <div className="space-y-6">
+            <Card className="p-8 bg-card/80 backdrop-blur-sm border-pirate-gold shadow-mystical relative overflow-hidden animate-treasure-glow">
+              {/* Card background effects */}
+              <motion.div
+                className="absolute inset-0 bg-treasure-shimmer opacity-20"
+                animate={{ x: [-100, 300] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pirate-gold to-transparent"
+                animate={{ x: [-100, 400] }}
+                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+              />
+              <div className="space-y-6 relative z-10">
                 <motion.div
                   className="text-pirate-parchment font-royal text-lg leading-relaxed"
                   initial={{ opacity: 0 }}
