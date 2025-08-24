@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import OpeningScreen from "./OpeningScreen";
@@ -24,9 +24,26 @@ const PiratePortfolio = () => {
   const [showOpening, setShowOpening] = useState(true);
   const [currentSection, setCurrentSection] = useState(0);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [backgroundMusicVolume, setBackgroundMusicVolume] = useState(0.3);
+  const [isMuted, setIsMuted] = useState(false);
+  const backgroundAudioRef = useRef<HTMLAudioElement>(null);
 
   const handleStartJourney = () => {
     setShowOpening(false);
+    // Start background music when journey begins
+    if (backgroundAudioRef.current) {
+      backgroundAudioRef.current.play().catch(console.error);
+    }
+  };
+
+  useEffect(() => {
+    if (backgroundAudioRef.current) {
+      backgroundAudioRef.current.volume = isMuted ? 0 : backgroundMusicVolume;
+    }
+  }, [backgroundMusicVolume, isMuted]);
+
+  const toggleBackgroundMusic = () => {
+    setIsMuted(!isMuted);
   };
 
   const navigateToSection = (sectionId: number) => {
@@ -54,29 +71,74 @@ const PiratePortfolio = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40" />
         
-        {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
+        {/* Enhanced Floating particles */}
+        {[...Array(40)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-pirate-gold rounded-full opacity-30"
+            className={`absolute rounded-full ${
+              i % 4 === 0 ? 'w-2 h-2 bg-pirate-gold' : 
+              i % 4 === 1 ? 'w-1 h-1 bg-pirate-parchment' :
+              i % 4 === 2 ? 'w-1.5 h-1.5 bg-pirate-gold opacity-60' :
+              'w-0.5 h-0.5 bg-white'
+            }`}
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [-20, 20, -20],
-              opacity: [0.1, 0.6, 0.1],
-              scale: [0.5, 1, 0.5],
+              y: [-30, 30, -30],
+              x: [-10, 10, -10],
+              opacity: [0.1, 0.8, 0.1],
+              scale: [0.3, 1.2, 0.3],
+              rotate: [0, 360, 0],
             }}
             transition={{
-              duration: 4 + Math.random() * 4,
+              duration: 6 + Math.random() * 6,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: Math.random() * 3,
               ease: "easeInOut"
             }}
           />
         ))}
+
+        {/* Lightning effects */}
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={`lightning-${i}`}
+            className="absolute inset-0 bg-gradient-to-b from-pirate-gold/10 via-transparent to-transparent pointer-events-none"
+            animate={{
+              opacity: [0, 0, 0, 0.3, 0, 0, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              delay: i * 15 + Math.random() * 10,
+            }}
+          />
+        ))}
+
+        {/* Mystical fog */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-radial from-transparent via-pirate-gold/5 to-transparent pointer-events-none"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.3, 0.1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </div>
+
+      {/* Background Music */}
+      <audio
+        ref={backgroundAudioRef}
+        src="/Pirates-Of-The-Caribbean-Theme.mp3"
+        loop
+        preload="auto"
+      />
 
       {/* Opening Screen */}
       <AnimatePresence>
@@ -94,30 +156,55 @@ const PiratePortfolio = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            {/* Navigation */}
+            {/* Music Control */}
+            <motion.div
+              className="fixed top-8 right-8 z-50"
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
+            >
+              <Button
+                onClick={toggleBackgroundMusic}
+                variant="ghost"
+                size="sm"
+                className="w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-pirate-gold/30 text-pirate-gold hover:bg-pirate-gold/20 hover:text-pirate-parchment transition-mystical"
+              >
+                {isMuted ? "🔇" : "🎵"}
+              </Button>
+            </motion.div>
+
+            {/* Enhanced Navigation */}
             <motion.nav
               className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              <div className="flex space-x-2 bg-black/20 backdrop-blur-md rounded-full p-2 border border-pirate-gold/30">
+              <div className="flex space-x-2 bg-black/30 backdrop-blur-md rounded-full p-3 border-2 border-pirate-gold/40 shadow-mystical">
                 {sections.map((section) => (
-                  <Button
-                    key={section.id}
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => navigateToSection(section.id)}
-                    className={`px-4 py-2 rounded-full font-royal font-semibold transition-mystical ${
-                      currentSection === section.id
-                        ? 'bg-pirate-gold text-pirate-brown shadow-treasure'
-                        : 'text-pirate-gold hover:bg-pirate-gold/20 hover:text-pirate-parchment'
-                    }`}
-                    disabled={isNavigating}
-                  >
-                    <span className="mr-2">{section.icon}</span>
-                    {section.name}
-                  </Button>
+                  <motion.div key={section.id} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => navigateToSection(section.id)}
+                      className={`px-4 py-2 rounded-full font-royal font-semibold transition-mystical relative overflow-hidden ${
+                        currentSection === section.id
+                          ? 'bg-pirate-gold text-pirate-brown shadow-treasure border border-pirate-gold/50'
+                          : 'text-pirate-gold hover:bg-pirate-gold/20 hover:text-pirate-parchment hover:shadow-treasure'
+                      }`}
+                      disabled={isNavigating}
+                    >
+                      {currentSection === section.id && (
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-pirate-gold/20 via-pirate-gold/40 to-pirate-gold/20"
+                          animate={{ x: [-100, 100] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                      )}
+                      <span className="mr-2 relative z-10">{section.icon}</span>
+                      <span className="relative z-10">{section.name}</span>
+                    </Button>
+                  </motion.div>
                 ))}
               </div>
             </motion.nav>
@@ -142,26 +229,50 @@ const PiratePortfolio = () => {
               totalSections={sections.length} 
             />
 
-            {/* Pirate Quotes */}
+            {/* Enhanced Pirate Quotes */}
             <motion.div
-              className="fixed bottom-4 left-4 max-w-xs z-30"
+              className="fixed bottom-4 left-4 max-w-sm z-30"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2, duration: 0.8 }}
             >
               <motion.div
-                className="bg-black/40 backdrop-blur-sm rounded-lg p-4 border border-pirate-gold/30"
-                animate={{ scale: [1, 1.02, 1] }}
+                className="bg-black/50 backdrop-blur-md rounded-lg p-6 border-2 border-pirate-gold/40 shadow-mystical relative overflow-hidden"
+                animate={{ 
+                  scale: [1, 1.02, 1],
+                  boxShadow: [
+                    "0 0 20px rgba(255, 215, 0, 0.3)",
+                    "0 0 30px rgba(255, 215, 0, 0.5)",
+                    "0 0 20px rgba(255, 215, 0, 0.3)"
+                  ]
+                }}
                 transition={{ duration: 4, repeat: Infinity }}
               >
-                <p className="text-pirate-parchment font-royal text-sm italic">
-                  {currentSection === 0 && "\"Data is the new oil, but like oil, it's valuable only when refined.\""}
-                  {currentSection === 1 && "\"In data science, experience is the best teacher of statistical intuition.\""}
-                  {currentSection === 2 && "\"Every dataset tells a story; the data scientist's job is to listen.\""}
-                  {currentSection === 3 && "\"Statistics are like a bikini - what they reveal is suggestive, but what they conceal is vital.\""}
-                  {currentSection === 4 && "\"Music gives soul to the universe, wings to the mind, and life to everything.\""}
-                  {currentSection === 5 && "\"The best way to find out if you can trust somebody is to trust them.\""}
-                </p>
+                {/* Animated border */}
+                <motion.div
+                  className="absolute inset-0 rounded-lg border-2 border-pirate-gold/60"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                
+                <div className="relative z-10">
+                  <p className="text-pirate-parchment font-royal text-sm italic leading-relaxed">
+                    {currentSection === 0 && "\"Ahoy! Captain Sahil here - Data be the new treasure, but like gold, it's valuable only when refined by skilled hands.\""}
+                    {currentSection === 1 && "\"In the vast seas of data science, experience be the best compass for navigating statistical storms.\""}
+                    {currentSection === 2 && "\"Every dataset tells a tale of adventure; this data scientist's job is to listen to its secrets.\""}
+                    {currentSection === 3 && "\"A pirate's skills be like his weapons - what ye show is impressive, but what ye conceal is legendary.\""}
+                    {currentSection === 4 && "\"Music gives soul to the seven seas, wings to a pirate's mind, and rhythm to every adventure.\""}
+                    {currentSection === 5 && "\"The best way to find a trustworthy crew mate is to trust them with yer first treasure map.\""}
+                  </p>
+                  <div className="flex items-center mt-3">
+                    <motion.div
+                      className="w-2 h-2 bg-pirate-gold rounded-full mr-2"
+                      animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    <span className="text-pirate-gold font-royal text-xs">~ Captain Sahil's Wisdom</span>
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
 

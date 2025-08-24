@@ -73,6 +73,13 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			backgroundImage: {
+				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+				"gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+				"pirate-treasure": "linear-gradient(135deg, hsl(var(--pirate-gold)), hsl(var(--pirate-brown)), hsl(var(--pirate-gold)))",
+				"mystical-glow": "radial-gradient(circle at center, hsl(var(--pirate-gold) / 0.3), transparent 70%)",
+				"treasure-shimmer": "linear-gradient(45deg, transparent 30%, hsl(var(--pirate-gold) / 0.3) 50%, transparent 70%)",
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -105,6 +112,28 @@ export default {
 				flicker: {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0.7' }
+				},
+				shimmer: {
+					'0%': { backgroundPosition: '-200% center' },
+					'100%': { backgroundPosition: '200% center' }
+				},
+				'treasure-glow': {
+					'0%, 100%': { 
+						boxShadow: '0 0 20px rgba(255, 215, 0, 0.3)',
+						transform: 'scale(1)'
+					},
+					'50%': { 
+						boxShadow: '0 0 40px rgba(255, 215, 0, 0.6)',
+						transform: 'scale(1.05)'
+					}
+				},
+				'pulse-glow': {
+					'0%, 100%': { boxShadow: '0 0 5px hsl(var(--pirate-gold) / 0.5)' },
+					'50%': { boxShadow: '0 0 20px hsl(var(--pirate-gold) / 0.8), 0 0 30px hsl(var(--pirate-gold) / 0.6)' }
+				},
+				'mystical-rotate': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
 				}
 			},
 			animation: {
@@ -113,7 +142,11 @@ export default {
 				wave: 'wave 3s ease-in-out infinite',
 				float: 'float 4s ease-in-out infinite',
 				sail: 'sail 10s linear infinite',
-				flicker: 'flicker 2s ease-in-out infinite'
+				flicker: 'flicker 2s ease-in-out infinite',
+				shimmer: 'shimmer 3s infinite',
+				'treasure-glow': 'treasure-glow 4s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'mystical-rotate': 'mystical-rotate 20s linear infinite'
 			}
 		}
 	},

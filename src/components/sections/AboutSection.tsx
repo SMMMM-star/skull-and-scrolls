@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import treasureMapImage from "@/assets/treasure-map.png";
+import sahilProfile from "@/assets/sahil-profile.png";
 
 const AboutSection = () => {
   return (
@@ -18,8 +19,64 @@ const AboutSection = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          🏴‍☠️ About This Captain
+          🏴‍☠️ Captain Sahil Mujumdar
         </motion.h2>
+
+        {/* Profile Photo */}
+        <motion.div
+          className="flex justify-center mb-12"
+          initial={{ scale: 0, rotateY: 180 }}
+          animate={{ scale: 1, rotateY: 0 }}
+          transition={{ delay: 0.5, duration: 1, type: "spring" }}
+        >
+          <div className="relative">
+            <motion.div
+              className="w-48 h-48 rounded-full overflow-hidden border-4 border-pirate-gold shadow-treasure relative z-10"
+              whileHover={{ scale: 1.1, rotateZ: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <img
+                src={sahilProfile}
+                alt="Captain Sahil Mujumdar"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+            {/* Glowing ring effect */}
+            <motion.div
+              className="absolute inset-0 w-48 h-48 rounded-full border-2 border-pirate-gold opacity-50"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.5, 0.8, 0.5] 
+              }}
+              transition={{ 
+                duration: 3, 
+                repeat: Infinity,
+                ease: "easeInOut" 
+              }}
+            />
+            {/* Floating particles around profile */}
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-pirate-gold rounded-full"
+                style={{
+                  left: `${Math.cos((i * Math.PI * 2) / 8) * 120 + 96}px`,
+                  top: `${Math.sin((i * Math.PI * 2) / 8) * 120 + 96}px`,
+                }}
+                animate={{
+                  y: [-10, 10, -10],
+                  opacity: [0.3, 1, 0.3],
+                  scale: [0.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: 2 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                }}
+              />
+            ))}
+          </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <motion.div
@@ -50,8 +107,8 @@ const AboutSection = () => {
                   transition={{ delay: 1, duration: 0.8 }}
                 >
                   <p className="mb-4">
-                    Ahoy there, brave soul! I be a junior data scientist navigating the vast 
-                    oceans of data, with a passion for discovering hidden treasures in datasets. 
+                    Ahoy there, brave soul! I be Captain Sahil Mujumdar, a skilled junior data scientist 
+                    navigating the vast oceans of data, with a passion for discovering hidden treasures in datasets. 
                     My ship is equipped with Python, SQL, machine learning algorithms, and statistical analysis tools.
                   </p>
                   <p className="mb-4">
@@ -61,7 +118,7 @@ const AboutSection = () => {
                   </p>
                   <p>
                     Currently charting new courses in machine learning and artificial intelligence, 
-                    always ready for the next data adventure!
+                    always ready for the next data adventure on the seven seas of data!
                   </p>
                 </motion.div>
 

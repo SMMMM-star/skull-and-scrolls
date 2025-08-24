@@ -182,29 +182,101 @@ All colors MUST be HSL.
   .animate-sail {
     animation: sail 10s linear infinite;
   }
-  /* Slider styles for music player */
-  .slider {
-    background: linear-gradient(to right, hsl(var(--pirate-gold)) 0%, hsl(var(--pirate-brown-dark)) 100%);
+/* Custom animations and utilities */
+.slider::-webkit-slider-track {
+  background: linear-gradient(90deg, hsl(var(--pirate-brown-dark)), hsl(var(--pirate-gold)));
+  border-radius: 4px;
+  height: 8px;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: hsl(var(--pirate-gold));
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid hsl(var(--pirate-brown-dark));
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.slider::-moz-range-track {
+  background: linear-gradient(90deg, hsl(var(--pirate-brown-dark)), hsl(var(--pirate-gold)));
+  border-radius: 4px;
+  height: 8px;
+  border: none;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: hsl(var(--pirate-gold));
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid hsl(var(--pirate-brown-dark));
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Enhanced animations */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 0, 0.3),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes treasure-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    transform: scale(1);
   }
-  
-  .slider::-webkit-slider-thumb {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: hsl(var(--pirate-gold));
-    cursor: pointer;
-    border: 2px solid hsl(var(--pirate-brown));
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  50% { 
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+    transform: scale(1.05);
   }
-  
-  .slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: hsl(var(--pirate-gold));
-    cursor: pointer;
-    border: 2px solid hsl(var(--pirate-brown));
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.animate-treasure-glow {
+  animation: treasure-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px hsl(var(--pirate-gold) / 0.5);
   }
+  50% { 
+    box-shadow: 0 0 20px hsl(var(--pirate-gold) / 0.8), 0 0 30px hsl(var(--pirate-gold) / 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes mystical-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-mystical-rotate {
+  animation: mystical-rotate 20s linear infinite;
+}
+
+/* Pirate-themed cursor effects */
+.cursor-sword {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewport='0 0 100 100'><text y='18' font-size='20'>⚔️</text></svg>") 12 0, auto;
+}
+
+.cursor-treasure {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewport='0 0 100 100'><text y='18' font-size='20'>💎</text></svg>") 12 0, auto;
+}
 }
